@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ListmoviesComponent } from './listmovies/listmovies.component';
+
 import { MenuComponent } from "./compartidos/components/menu/menu.component";
+import { LandingPageComponent } from './landingpage/landingpage.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    ListmoviesComponent, 
+    LandingPageComponent, 
     RouterOutlet, 
     MenuComponent, 
   

@@ -5,10 +5,10 @@ import { CardmoviesComponent } from "../compartidos/components/cardmovies/cardmo
   selector: 'app-listmovies',
   standalone: true,
   imports: [CardmoviesComponent],
-  templateUrl: './listmovies.component.html',
-  styleUrl: './listmovies.component.css'
+  templateUrl: './landingpage.component.html',
+  styleUrl: './landingpage.component.css'
 })
-export class ListmoviesComponent {
+export class LandingPageComponent {
 
   
 }
