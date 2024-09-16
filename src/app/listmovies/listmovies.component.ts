@@ -10,4 +10,5 @@ import { CardmoviesComponent } from "../compartidos/components/cardmovies/cardmo
 })
 export class ListmoviesComponent {
 
+  
 }
