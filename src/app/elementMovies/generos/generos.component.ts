@@ -29,18 +29,28 @@ import {MatButtonModule} from '@angular/material/button';
 export class GenerosComponent {
      private formbuilder= inject(FormBuilder);
      form = this.formbuilder.group({
-        name: ['',Validators.required]
+        name: ['',[Validators.required, Validators.minLength(4)]]
      })
    
      saveChange(){
        console.log();
      }
-     getErrorInput():string{
-       let nombre= this.form.controls.name;
-       if(nombre.hasError('required')){
-        return "El campo nombre es requerido"
+
+     getErrorInput(inputName:string):string| null{
+
+      const error = this.form.controls['name'].errors || {};
+       for(const key of Object.keys(error)){
+           switch(key){
+            
+            case 'required':
+              return "Este campo es requerido"
+            case 'minlength':
+              return  "El campo requiere mínimo 4 caracteres"
+           }
        }
-       return "";
+       
+       return null;
+   
      }
 
 }
