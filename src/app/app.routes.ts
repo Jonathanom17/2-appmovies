@@ -1,20 +1,38 @@
 import { Routes } from '@angular/router';
-import { LandingPageComponent } from './landingpage/landingpage.component';
-import { GenerosComponent } from './elementMovies/generos/generos.component';
-import { ActoresComponent } from './elementMovies/actores/actores.component';
-import { CinesComponent } from './elementMovies/cines/cines.component';
-import { MoviesComponent } from './elementMovies/movies/movies.component';
+
 
 
 export const routes: Routes = [
-    
-    { path:"",component: LandingPageComponent},
-    { path:"landing",component: LandingPageComponent},
-    { path:"generos",component: GenerosComponent},
-    { path:"actores",component: ActoresComponent},
-    { path:"cines",component: CinesComponent},
-    { path:"movies",component: MoviesComponent},
-    { path:"**",redirectTo: 'landing'},
+    {
+        path: "landing",
+        loadComponent: () => import('./landingpage/landingpage.component'),
+        children:[
+            {
+                path:'actores',
+                title:'Actores',
+                loadComponent: () => import('./landingpage/pages/actores/actores.component'),
+            },
+            {
+                path:'cines',
+                title:'Cines',
+                loadComponent: () => import('./landingpage/pages/cines/cines.component'),
+            },
+            {
+                path:'generos',
+                title:'Generos',
+                loadComponent: () => import('./landingpage/pages/generos/generos.component'),
+            },
+        ]
+
+    },
+    {
+        path: '',
+        redirectTo: '/landing',
+        pathMatch:'full'
+
+    },
+
+    // { path:"**",redirectTo: 'landing'},
    
     
 ];

@@ -8,7 +8,7 @@ import { CardmoviesComponent } from "../compartidos/components/cardmovies/cardmo
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })
-export class LandingPageComponent {
+export default class LandingPageComponent {
 
   
 }

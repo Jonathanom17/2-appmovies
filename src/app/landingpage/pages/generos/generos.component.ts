@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { GeneroMovie } from '../../interfaces/generomovie.interface';
+
 import {MatDividerModule} from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -24,33 +24,31 @@ import {MatButtonModule} from '@angular/material/button';
   templateUrl: './generos.component.html',
   styleUrl: './generos.component.css'
 })
+export default  class GenerosComponent {
+  private formbuilder= inject(FormBuilder);
+  form = this.formbuilder.group({
+     name: ['',[Validators.required, Validators.minLength(4)]]
+  })
 
+  saveChange(){
+    console.log();
+  }
 
-export class GenerosComponent {
-     private formbuilder= inject(FormBuilder);
-     form = this.formbuilder.group({
-        name: ['',[Validators.required, Validators.minLength(4)]]
-     })
-   
-     saveChange(){
-       console.log();
-     }
+  getErrorInput(inputName:string):string| null{
 
-     getErrorInput(inputName:string):string| null{
+   const error = this.form.controls['name'].errors || {};
+    for(const key of Object.keys(error)){
+        switch(key){
+         
+         case 'required':
+           return "Este campo es requerido"
+         case 'minlength':
+           return  "El campo requiere mínimo 4 caracteres"
+        }
+    }
+    
+    return null;
 
-      const error = this.form.controls['name'].errors || {};
-       for(const key of Object.keys(error)){
-           switch(key){
-            
-            case 'required':
-              return "Este campo es requerido"
-            case 'minlength':
-              return  "El campo requiere mínimo 4 caracteres"
-           }
-       }
-       
-       return null;
-   
-     }
+  }
 
 }

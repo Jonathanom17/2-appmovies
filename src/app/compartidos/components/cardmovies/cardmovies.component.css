@@ -13,8 +13,16 @@
      text-align: center;
   }
 
-  a {
-    margin: 2rem;
-  }
- 
   
+ p {
+    max-width: 225px;
+    font-size: 15px;
+    
+ }
+  
+ .button-container {
+   margin: 0.5rem;
+ }
+ button {
+  margin-left: 1rem;
+ }

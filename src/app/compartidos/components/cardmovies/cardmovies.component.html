@@ -11,12 +11,14 @@
         {{movie.cast}}
       </p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="button-container">
       <app-rating (votacion)="procesarVoto($event)"></app-rating>
-      <a mat-flat-button>
-        <mat-icon>share</mat-icon></a>
-
+      
     </mat-card-actions>
+    <div class="button-container">
+      <a mat-flat-button>Editar </a>
+      <button mat-flat-button type="button" color="warr">Borrar</button>
+    </div>
   </mat-card>
   }
 </div>

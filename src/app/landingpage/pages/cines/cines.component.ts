@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './cines.component.html',
   styleUrl: './cines.component.css'
 })
-export class CinesComponent {
+export default  class CinesComponent {
 
 }
