@@ -3,5 +3,14 @@ mat-toolbar{
     position: -webkit-sticky;
     top:0;
     z-index: 1000;
+    
 
+}
+
+.nav-bar {
+    background: linear-gradient(207.8deg, #201E1C 30%, #4947d4 70%);
+}
+
+h3 {
+    color: aliceblue;
 }

@@ -1,9 +1,10 @@
-<mat-toolbar>
-@for (item of arrayitemMenu; track $index) {
+<mat-toolbar class="nav-bar aling-content">
+@for (item of rutasMenu; track $index) {
 
-    <span>
-        <a routerLink="{{item.componente}}" mat-button>
-            <mat-icon>{{item.icom}}</mat-icon> {{item.title}}
+    <span class="navbar-container">
+        <a [routerLink]="item.path" mat-button>
+           
+            <h3 >{{item.title}}</h3>
         </a>
     </span>
 }

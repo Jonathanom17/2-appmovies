@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { CardmoviesComponent } from "../compartidos/components/cardmovies/cardmovies.component";
+
+import { RouterModule } from '@angular/router';
+import { MenuComponent } from "../compartidos/components/menu/menu.component";
 
 @Component({
   selector: 'app-listmovies',
   standalone: true,
-  imports: [CardmoviesComponent],
+  imports: [RouterModule, MenuComponent],
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.css'
 })

@@ -1,4 +1,6 @@
-<form (submit)="saveChange()" [formGroup]="form"> 
+<div class="form-container">
+
+  <form (submit)="saveChange()" [formGroup]="form"> 
     <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="name">
@@ -19,3 +21,4 @@
 </form>
 
 <mat-divider></mat-divider>
+</div>

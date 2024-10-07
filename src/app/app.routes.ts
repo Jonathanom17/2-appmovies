@@ -8,8 +8,15 @@ export const routes: Routes = [
         loadComponent: () => import('./landingpage/landingpage.component'),
         children:[
             {
+                path:'listmovies',
+                title:'Listado Peliculas',
+                
+                loadComponent: () => import('./landingpage/pages/listmovies/listmovies.component'),
+            },
+            {
                 path:'actores',
                 title:'Actores',
+                
                 loadComponent: () => import('./landingpage/pages/actores/actores.component'),
             },
             {
@@ -22,6 +29,10 @@ export const routes: Routes = [
                 title:'Generos',
                 loadComponent: () => import('./landingpage/pages/generos/generos.component'),
             },
+            {
+                path:'', redirectTo: 'listmovies', pathMatch: 'full',
+        
+            }
         ]
 
     },
