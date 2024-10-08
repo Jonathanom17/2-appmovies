@@ -1,4 +1,4 @@
-export interface GeneroMovie{
+export interface IGeneroMovie{
     id:number;
     description:string;
 }
