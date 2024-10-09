@@ -1,4 +1,4 @@
-import { Component, inject, model, OnInit } from '@angular/core';
+import { Component, Inject, inject, model, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalService } from '../../../../services/modal.service';
+import { IGeneroMovie } from '../../../../interfaces/interfaces-movie.interface';
 
 @Component({
   selector: 'modal-dialog-addgenero',
@@ -28,38 +29,58 @@ import { ModalService } from '../../../../services/modal.service';
     MatInputModule,
     ReactiveFormsModule
   ],
-  templateUrl: './dialog-addgenero.component.html',
-  styleUrl: './dialog-addgenero.component.css'
+  templateUrl: './modal-dialog-generos.component.html',
+  styleUrl: './modal-dialog-generos.component.css'
 })
-export class DialogAddgeneroComponent implements OnInit {
 
+
+
+export class ModalDialogGeneroComponent implements OnInit {
+  firstNameIsReadOnly: boolean=false;
   generotForm!: FormGroup;
   private readonly _fb= inject(FormBuilder);
-  private readonly _matDialog = inject(MAT_DIALOG_DATA);
-  private readonly _modalService = inject(ModalService);
+
+  private  _modalService = inject(ModalService);
+
   private _buildForm():void{
     this.generotForm = this._fb.group({
        description:['', [Validators.required, Validators.minLength(5)]]
     })
   }
+  constructor(@Inject(MAT_DIALOG_DATA) public data:IGeneroMovie){
 
+  }
+
+  
   onSubmit(){
     if (!this.generotForm.valid) {
       this.generotForm.markAllAsTouched();
       return;
     }else{
-      const solicitudVideo = this.generotForm.value;
-      console.log(solicitudVideo.description)
+      const datos = this.generotForm.value;
+      if(this.data.status){
+        
+      console.table(datos)
+      }else{
+        console.log(datos)
+        
+      }
+      this.generotForm.reset();
+        this._modalService.closeModal();
     }
     
       
    
   }
 
-  getTitle():string{
-    return this._matDialog.data ? 'Ediatar Género': 'Agregar Género';
+  getTitle(): string {
+    return (this.data.status)? 'Editar Género': 'Agregar Género';
+
   }
+
+ 
   ngOnInit(): void {
+    
     this._buildForm();
   }
 

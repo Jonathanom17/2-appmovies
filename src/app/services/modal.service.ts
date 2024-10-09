@@ -11,11 +11,12 @@ export class ModalService {
 
     constructor() { }
 
-    openModal<CT,T>(compentRef: ComponentType<CT>, data?: T, isEditing=false):void{
-        const config = {data, isEditing}
+    openModal<CT,T>(compentRef: ComponentType<CT>, _data?: T):void{
+       
         this._dialogo.open(compentRef, {
-            data:config,
-            width:'12000px'
+            data:_data,
+            width:'500px',
+             
         });
 
     }

@@ -1,9 +1,9 @@
+import { IGeneroMovie } from '../../../interfaces/interfaces-movie.interface';
 import { Component, inject } from "@angular/core";
-import { MatDialog} from '@angular/material/dialog';
-import { DialogAddgeneroComponent } from "./dialog-addgenero/dialog-addgenero.component";
+import { ModalDialogGeneroComponent } from "./modal-dialog-generos/modal-dialog-generos.component";
 import {MatButtonModule} from '@angular/material/button';
 import { ModalService } from "../../../services/modal.service";
-import { IGeneroMovie } from "../../../interfaces/generomovie.interface";
+
 
 @Component({
   selector: 'app-generos',
@@ -20,12 +20,18 @@ import { IGeneroMovie } from "../../../interfaces/generomovie.interface";
 export default class GenerosComponent {
   readonly _dialog = inject(ModalService);
 
+  datos:IGeneroMovie={id:0, description:"Jonathan", status:true};
+  datos2:IGeneroMovie={id:0, description:"", status:false};
 
-  openDialog(): void {
-   this._dialog.openModal<DialogAddgeneroComponent,IGeneroMovie>(DialogAddgeneroComponent);
+  openDialogAdd(): void {
+   this._dialog.openModal(ModalDialogGeneroComponent, this.datos2);
  
   }
 
+  openDialogEdit(){
+    
+    this._dialog.openModal(ModalDialogGeneroComponent,this.datos);
+  }
 
 }
 
